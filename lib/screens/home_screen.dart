@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../data/mock_cards.dart';
+import '../components/card_item.dart';
 
 class HomeScreen extends StatelessWidget {
   final VoidCallback toggleTheme;
@@ -22,11 +24,11 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Text(
-          'Welcome to CardHive!',
-          style: Theme.of(context).textTheme.headlineSmall,
-        ),
+      body: ListView.builder(
+        itemCount: mockCards.length,
+        itemBuilder: (context, index) {
+          return CardItem(card: mockCards[index]);
+        },
       ),
     );
   }
